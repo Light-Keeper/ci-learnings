@@ -27,8 +27,12 @@ jobs:
 
 workflows:
   version: 2
-  someWorkfolow:
+  'Test and build':
     jobs:
       - build
       - test: {requires: [ build ]}
 
+  'Test only':
+    jobs:
+      - build
+      - test: {requires: [ build ]}
