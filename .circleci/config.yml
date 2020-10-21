@@ -1,4 +1,13 @@
-version: 2.0
+version: 2.1
+
+commands:
+  sayhello:
+    description: 'Say hello reusable command'
+    parameters:
+      to:
+        type: string
+    steps:
+      - run:  echo << parameters.to >>
 
 jobs:
   build:
@@ -23,6 +32,7 @@ jobs:
     docker:
       - image: node:alpine
     steps:
+      - sayhello: {to: vadim}
       - run: echo "This is test"
 
 workflows:
