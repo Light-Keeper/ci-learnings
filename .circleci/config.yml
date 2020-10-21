@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
       - image: node:alpine
-
     steps:
       - run: apk add git #base image does not have git
       - checkout
@@ -19,3 +18,17 @@ jobs:
             ls -al
             echo '^^^That should look familiar^^^'
       - run: node -v
+
+  test:
+    docker:
+      - image: node:alpine
+    steps:
+      - run: echo "This is test"
+
+workflows:
+  version: 2
+  someWorkfolow:
+    jobs:
+      - build
+      - test: {requires: [ build ]}
+
