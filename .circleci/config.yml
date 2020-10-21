@@ -34,5 +34,4 @@ workflows:
 
   'Test only':
     jobs:
-      - build
-      - test: {requires: [ build ]}
+      - test
