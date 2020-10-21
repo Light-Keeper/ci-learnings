@@ -31,7 +31,10 @@ workflows:
     jobs:
       - build
       - test: {requires: [ build ]}
+      - 'Hold for approval': {type: approval, requires: [ build, test ]}
 
   'Test only':
     jobs:
       - test
+
+
